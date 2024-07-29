@@ -34,16 +34,15 @@ module.exports = function toReadable (number) {
     };
     
     function tens(number) {
-      return number < 20 ?
-       numbersArr[number] : number < 100 ?
-        numbersPronounceArr[Math.floor(number / 10)] + (number % 10 ? '' + numbersArr[number % 10]: '') : '';
+        return number < 20 ? numbersArr[number] :
+            numbersPronounceArr[Math.floor(number / 10)] + (number % 10 ? ' ' + numbersArr[number % 10] : '');
     }
-    
-    function hundreds(number){
-      return numbersArr[Math.floor(number / 100)] + ' hundred' + (number % 100 > 0 ? ' ' + tens(number % 100) : '');
+
+    function hundreds(number) {
+        return numbersArr[Math.floor(number / 100)] + ' hundred' + (number % 100 > 0 ? ' ' + tens(number % 100) : '');
     }
-    
-    function thousands(number){
+
+    function thousands(number) {
         return numbersArr[Math.floor(number / 1000)] + ' thousand' + (number % 1000 > 0 ? ' ' + (number % 1000 < 100 ? tens(number % 1000) : hundreds(number % 1000)) : '');
     }
     
